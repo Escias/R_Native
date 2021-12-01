@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 
 const App = () => {
