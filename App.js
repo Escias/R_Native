@@ -8,7 +8,7 @@ const App = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'white',
   },
 });
 
