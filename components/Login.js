@@ -1,6 +1,5 @@
 import React, {useCallback, useState} from 'react';
 import {
-  Alert,
   Image,
   SafeAreaView,
   StyleSheet,
@@ -9,27 +8,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const Register = () => {
+const Login = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  let [isValidPassword, setValidPassword] = useState(false);
-  let [isValidConfirmPassword, setValidConfirmPassword] = useState(false);
-
-  const message = useCallback(() => {
-    Alert.alert(
-      `Bonjour ${firstname} ${lastname}, votre mot de passe est ${password}`,
-    );
-  }, [firstname, lastname, password]);
-
-  const pass = useCallback(() => {
-    setValidPassword(password.length >= 3 || password.length === 0);
-  }, [password]);
-
-  const confPass = useCallback(() => {
-    return setValidConfirmPassword(password === confirmPassword);
-  }, [confirmPassword, password]);
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -48,26 +30,14 @@ const Register = () => {
         placeholder={'Nom'}
       />
       <TextInput
-        style={[styles.input, isValidPassword ? undefined : styles.password1]}
+        style={[styles.input]}
         secureTextEntry={true}
         onChangeText={password => setPassword(password)}
         defaultValue={password}
-        onEndEditing={pass}
         placeholder={'Mot de passe'}
       />
-      <TextInput
-        style={[
-          styles.input,
-          isValidConfirmPassword ? undefined : styles.password1,
-        ]}
-        secureTextEntry={true}
-        onChangeText={confirmPassword => setConfirmPassword(confirmPassword)}
-        defaultValue={confirmPassword}
-        onEndEditing={confPass}
-        placeholder={'Confirmation du mot de passe'}
-      />
-      <TouchableOpacity style={styles.button} onPress={message}>
-        <Text>Envoyer</Text>
+      <TouchableOpacity style={styles.button}>
+        <Text>Connexion</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -114,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default Login;
