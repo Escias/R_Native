@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   FlatList,
   Image,
@@ -11,12 +11,13 @@ import {
 const ListDetail = props => {
   const [img, setImg] = useState([]);
 
-  useEffect(() => {
+  const image = useCallback(() => {
     fetch('https://pokeapi.co/api/v2/pokemon/' + props.name)
       .then(response => response.json())
       .then(json => setImg(json.sprites.front_default))
       .catch(error => console.error(error));
-  }, []);
+    return img.toString();
+  }, [img, props.name]);
   return (
     <SafeAreaView style={styles.screen}>
       <View>
@@ -25,7 +26,9 @@ const ListDetail = props => {
       <View>
         <Image
           source={{
-            uri: img.toString(),
+            uri: image()
+              ? image()
+              : 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
           }}
           style={{
             width: 150,
