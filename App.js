@@ -1,7 +1,6 @@
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import PokemonList from './components/List/PokemonList';
 import React, {useCallback, useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 
 import AppNavigator from './components/navigators/AppNavigator';
