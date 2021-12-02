@@ -38,7 +38,11 @@ const ListDetail = props => {
 };
 
 const styles = StyleSheet.create({
-  screen: {},
+  screen: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 });
 
 export default ListDetail;
