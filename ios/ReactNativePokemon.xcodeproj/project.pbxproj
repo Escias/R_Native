@@ -145,7 +145,6 @@
 				6161CD16C8D07C58A3201C7D /* Pods-ReactNativePokemon-ReactNativePokemonTests.debug.xcconfig */,
 				F2AF5018E0F70071F96EC263 /* Pods-ReactNativePokemon-ReactNativePokemonTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
