@@ -18,33 +18,40 @@ const ListDetail = props => {
       .catch(error => console.error(error));
     return img.toString();
   }, [img, props.name]);
+
   return (
-    <SafeAreaView style={styles.screen}>
-      <View>
-        <Text>{props.name}</Text>
-      </View>
-      <View>
-        <Image
-          source={{
-            uri: image()
-              ? image()
-              : 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
-          }}
-          style={{
-            width: 150,
-            height: 150,
-          }}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={styles.screen}>
+      <Text style={styles.text}>{props.name}</Text>
+      <Image
+        source={{
+          uri: image()
+            ? image()
+            : 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
+        }}
+        style={{
+          width: 150,
+          height: 150,
+        }}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    borderWidth: 2,
+    borderRadius: 15,
+    margin: 7,
+    backgroundColor: '#D3D3D3',
+  },
+  text: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });
 

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -6,6 +6,7 @@ const Stack = createNativeStackNavigator();
 
 import Login from '../Login';
 import Register from '../Register';
+import PokemonList from '../List/PokemonList';
 
 const AppNavigator = () => {
   return (
@@ -15,6 +16,7 @@ const AppNavigator = () => {
       }}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="PokemonList" component={PokemonList} />
     </Stack.Navigator>
   );
 };

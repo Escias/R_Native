@@ -1,4 +1,6 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Alert,
   Image,
@@ -11,6 +13,7 @@ import {
 } from 'react-native';
 
 const Register = () => {
+  const navigation = useNavigation();
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [mail, setMail] = useState('');
@@ -19,12 +22,49 @@ const Register = () => {
   let [isValidPassword, setValidPassword] = useState(false);
   let [isValidConfirmPassword, setValidConfirmPassword] = useState(false);
 
-  const message = useCallback(() => {
-    Alert.alert(`Welcome ${firstname} ${lastname}`);
-  }, [firstname, lastname]);
+  const setData = async () => {
+    if (firstname.length === 0 || lastname.length === 0 || mail.length === 0) {
+      Alert.alert('Warning', 'fill all input');
+    } else if (
+      password.match(
+        '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,20}$',
+      ) === false
+    ) {
+      Alert.alert(
+        'Warning',
+        'Password must contain 8 character, with at least 1 uppercase, 1 lowarcase, 1 number and 1 special character',
+      );
+    } else {
+      let value = [
+        {
+          firstname: firstname,
+          lastname: lastname,
+          mail: mail,
+          password: password,
+        },
+      ];
+      try {
+        const jsonValue = JSON.stringify(value);
+        await AsyncStorage.setItem('user', jsonValue);
+        navigateToLogin();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const navigateToLogin = useCallback(() => {
+    navigation.navigate('Login');
+  }, [navigation]);
 
   const pass = useCallback(() => {
-    setValidPassword(password.length >= 3 || password.length === 0);
+    setValidPassword(
+      password.match(
+        '^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,20}$',
+      ) === false ||
+        password.length === 0 ||
+        password === '',
+    );
   }, [password]);
 
   const confPass = useCallback(() => {
@@ -74,8 +114,8 @@ const Register = () => {
         onEndEditing={confPass}
         placeholder={'Confirm password'}
       />
-      <TouchableOpacity style={styles.button} onPress={message}>
-        <Text>Envoyer</Text>
+      <TouchableOpacity style={styles.button} onPress={setData}>
+        <Text>Register</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
