@@ -1,6 +1,6 @@
-import React from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import PokemonList from './components/List/PokemonList';
+import React, {useCallback, useState} from 'react';
 
 const App = () => {
   return (
