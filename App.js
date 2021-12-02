@@ -1,22 +1,19 @@
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import PokemonList from './components/List/PokemonList';
 import React, {useCallback, useState} from 'react';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+
+import AppNavigator from './components/navigators/AppNavigator';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.screen}>
-      <View>
-        <PokemonList />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer style={styles.screen}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default App;

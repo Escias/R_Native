@@ -7,21 +7,21 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  View,
 } from 'react-native';
 
 const Register = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
+  const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   let [isValidPassword, setValidPassword] = useState(false);
   let [isValidConfirmPassword, setValidConfirmPassword] = useState(false);
 
   const message = useCallback(() => {
-    Alert.alert(
-      `Bonjour ${firstname} ${lastname}, votre mot de passe est ${password}`,
-    );
-  }, [firstname, lastname, password]);
+    Alert.alert(`Welcome ${firstname} ${lastname}`);
+  }, [firstname, lastname]);
 
   const pass = useCallback(() => {
     setValidPassword(password.length >= 3 || password.length === 0);
@@ -33,19 +33,27 @@ const Register = () => {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <Text style={styles.text}>Inscription</Text>
-      <Image style={styles.img} source={require('./assets/avatar.jpg')} />
+      <View style={styles.title}>
+        <Image style={styles.img} source={require('../assets/pika_icon.png')} />
+        <Text style={styles.titleText}>Register</Text>
+      </View>
       <TextInput
         style={styles.input}
         onChangeText={firstname => setFirstname(firstname)}
         defaultValue={firstname}
-        placeholder={'Prénom'}
+        placeholder={'Firstname'}
       />
       <TextInput
         style={styles.input}
         onChangeText={lastname => setLastname(lastname)}
         defaultValue={lastname}
-        placeholder={'Nom'}
+        placeholder={'Lastname'}
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={mail => setMail(mail)}
+        defaultValue={mail}
+        placeholder={'Mail address'}
       />
       <TextInput
         style={[styles.input, isValidPassword ? undefined : styles.password1]}
@@ -53,7 +61,7 @@ const Register = () => {
         onChangeText={password => setPassword(password)}
         defaultValue={password}
         onEndEditing={pass}
-        placeholder={'Mot de passe'}
+        placeholder={'Password'}
       />
       <TextInput
         style={[
@@ -64,7 +72,7 @@ const Register = () => {
         onChangeText={confirmPassword => setConfirmPassword(confirmPassword)}
         defaultValue={confirmPassword}
         onEndEditing={confPass}
-        placeholder={'Confirmation du mot de passe'}
+        placeholder={'Confirm password'}
       />
       <TouchableOpacity style={styles.button} onPress={message}>
         <Text>Envoyer</Text>
@@ -74,12 +82,23 @@ const Register = () => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
   screen: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     margin: 10,
+  },
+  titleText: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: 'black',
+    marginBottom: 10,
   },
   text: {
     fontSize: 40,
@@ -88,11 +107,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   img: {
-    flex: 1,
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
+    height: 50,
+    width: 50,
     borderRadius: 150,
+    backgroundColor: 'green',
+    borderWidth: 1,
+    borderColor: 'black',
+    marginHorizontal: 10,
   },
   input: {
     borderWidth: 2,

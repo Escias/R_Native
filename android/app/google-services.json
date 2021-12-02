@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "434864647252",
+    "firebase_url": "https://pokinfo-d1b9c-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pokinfo-d1b9c",
+    "storage_bucket": "pokinfo-d1b9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434864647252:android:4acdfae16efaf4dc3811c1",
+        "android_client_info": {
+          "package_name": "com.reactnativepokemon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434864647252-jgpjviaft1d2do94dqdkrfep9j75d4fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDVMt24T7cLFF8cxy-vNR-oYWCqUK6_Gw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434864647252-jgpjviaft1d2do94dqdkrfep9j75d4fh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
