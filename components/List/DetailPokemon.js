@@ -32,29 +32,26 @@ const DetailPokemon = props => {
     navigation.goBack();
   }, [navigation]);
 
-  if (data.abilities !== undefined) {
-    return (
-      <SafeAreaView style={styles.screen}>
-        <View>
-          <TouchableOpacity onPress={goBack}>
-            <Image
-              style={styles.img}
-              source={require('../../assets/back.png')}
-            />
-          </TouchableOpacity>
-        </View>
-        <View>
-          <PokemonDescription data={data} />
-        </View>
-      </SafeAreaView>
-    );
-  } else {
+  if (!data.abilities) {
     return (
       <SafeAreaView>
         <ActivityIndicator hidesWhenStopped={true} />
       </SafeAreaView>
     );
   }
+
+  return (
+    <SafeAreaView style={styles.screen}>
+      <View>
+        <TouchableOpacity onPress={goBack}>
+          <Image style={styles.img} source={require('../../assets/back.png')} />
+        </TouchableOpacity>
+      </View>
+      <View>
+        <PokemonDescription data={data} />
+      </View>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
