@@ -32,7 +32,7 @@ const Register = () => {
     ) {
       Alert.alert(
         'Warning',
-        'Password must contain 8 character, with at least 1 uppercase, 1 lowarcase, 1 number and 1 special character',
+        'Password must contain 8 character, with at least 1 uppercase, 1 lowercase, 1 number and 1 special character',
       );
     } else {
       let value = [
