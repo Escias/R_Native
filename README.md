@@ -8,7 +8,9 @@ It uses the API pokeapi.
 
 ## Dev Team
 ```
-Jimmy LAI / Theovady MOUTTY / Anis BASTIDE
+Jimmy LAI => Login, Register, Front style & README
+Theovady MOUTTY => Call API, List of pokemon & Details of pokemon
+Anis BASTIDE => research function, icon and name of application, optimization research & README
 ```
 
 ## Functionality
