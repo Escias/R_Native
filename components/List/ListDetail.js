@@ -11,7 +11,6 @@ import {
 import {useNavigation} from '@react-navigation/native';
 
 const ListDetail = props => {
-  const [img, setImg] = useState([]);
   const navigation = useNavigation();
   const navigateDetail = useCallback(() => {
     navigation.navigate('PokemonDetail', {
