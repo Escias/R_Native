@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 15,
     margin: 7,
-    backgroundColor: '#D3D3D3',
+    backgroundColor: 'rgba(210, 210, 210, 0.7)',
   },
   text: {
     color: 'black',
