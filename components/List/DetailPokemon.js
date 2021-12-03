@@ -4,7 +4,6 @@ import {
   Image,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -16,7 +15,6 @@ const DetailPokemon = props => {
   const navigation = useNavigation();
 
   const [data, setData] = useState([]);
-  const [abilites, setAbilites] = useState([]);
 
   useEffect(() => {
     (async function anyNameFunction() {

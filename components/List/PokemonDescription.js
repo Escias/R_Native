@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 import {
   FlatList,
   Image,
@@ -7,7 +7,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import ListDetail from './ListDetail';
 
 const PokemonDescription = props => {
   if (props.data) {
