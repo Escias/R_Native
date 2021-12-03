@@ -11,13 +11,12 @@ import {
 import {useNavigation} from '@react-navigation/native';
 
 const ListDetail = props => {
-  const [img, setImg] = useState([]);
   const navigation = useNavigation();
   const navigateDetail = useCallback(() => {
     navigation.navigate('PokemonDetail', {
       name: props.item.pokemon_species.name,
     });
-  }, [navigation]);
+  }, [navigation, props.item.pokemon_species.name]);
 
   return (
     <TouchableOpacity style={styles.screen} onPress={navigateDetail}>
