@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName={'PokemonList'}
+      initialRouteName={'Login'}
       screenOptions={{
         headerShown: false,
       }}>
