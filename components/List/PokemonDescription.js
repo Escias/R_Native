@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '95%',
     margin: 10,
-    marginLeft: 100,
+    marginLeft: 35,
     marginRight: 100,
   },
   sprites: {
