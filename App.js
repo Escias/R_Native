@@ -1,18 +1,33 @@
-import {NavigationContainer} from '@react-navigation/native';
-import AppNavigator from './components/navigators/AppNavigator';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
-import React, {useCallback, useState} from 'react';
+import {ImageBackground, StyleSheet, View} from 'react-native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 
-export default function App() {
+import AppNavigator from './components/navigators/AppNavigator';
+import React from 'react';
+
+const App = () => {
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: 'transparent',
+    },
+  };
   return (
-    <NavigationContainer style={styles.screen}>
-      <AppNavigator />
-    </NavigationContainer>
+    <ImageBackground
+      style={styles.center}
+      source={require('./assets/pokemon_background.png')}
+      resizeMode="cover">
+      <NavigationContainer theme={MyTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </ImageBackground>
   );
-}
+};
+
 const styles = StyleSheet.create({
-  screen: {
+  center: {
     flex: 1,
-    backgroundColor: 'white',
   },
 });
+
+export default App;

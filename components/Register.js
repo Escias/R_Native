@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     height: '12%',
     borderRadius: 10,
     marginVertical: 15,
-    backgroundColor: '#DDDDDD',
+    backgroundColor: 'rgba(240, 240, 240, 0.7)',
   },
   button: {
     alignItems: 'center',
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     paddingHorizontal: 100,
+    backgroundColor: 'rgba(150, 150, 150, 0.8)',
   },
   password1: {
     borderColor: 'red',

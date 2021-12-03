@@ -16,7 +16,7 @@ const Login = () => {
   const navigation = useNavigation();
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
-  // [{"firstname": "Jimmy", "lastname": "Lai", "mail": "ljimmy98@hotmail.fr", "password": "Azerty12*"}]
+
   const getData = () => {
     try {
       AsyncStorage.getItem('user').then(value => {
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     margin: 10,
-    backgroundColor: 'transparent',
   },
   text: {
     fontSize: 40,
@@ -122,7 +121,7 @@ const styles = StyleSheet.create({
     height: '12%',
     borderRadius: 10,
     marginVertical: 15,
-    backgroundColor: '#DDDDDD',
+    backgroundColor: 'rgba(240, 240, 240, 0.7)',
   },
   button: {
     alignItems: 'center',
@@ -130,6 +129,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     paddingHorizontal: 100,
+    backgroundColor: 'rgba(150, 150, 150, 0.8)',
   },
   password1: {
     borderColor: 'red',
