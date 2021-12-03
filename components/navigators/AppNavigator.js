@@ -14,11 +14,10 @@ const AppNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="PokemonList" component={PokemonList} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="list" component={PokemonList} />
       <Stack.Screen name="Register" component={Register} />
-
+      <Stack.Screen name="PokemonList" component={PokemonList} />
       <Stack.Screen name="PokemonDetail" component={DetailPokemon} />
     </Stack.Navigator>
   );
