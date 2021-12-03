@@ -43,7 +43,7 @@ const PokemonList = () => {
         <FlatList
           data={filteredList}
           renderItem={({index, item}) => {
-            return <ListDetail name={item.pokemon_species.name} />;
+            return <ListDetail item={item} />;
           }}
         />
       </View>

@@ -12,7 +12,9 @@ const ListDetail = props => {
   const [img, setImg] = useState([]);
 
   const image = useCallback(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + props.name)
+    fetch(
+      'https://pokeapi.co/api/v2/pokemon/' + props.item.pokemon_species.name,
+    )
       .then(response => response.json())
       .then(json => setImg(json.sprites.front_default))
       .catch(error => console.error(error));
@@ -21,14 +23,15 @@ const ListDetail = props => {
   return (
     <SafeAreaView style={styles.screen}>
       <View>
-        <Text>{props.name}</Text>
+        <Text>{props.item.pokemon_species.name}</Text>
       </View>
       <View>
         <Image
           source={{
-            uri: image()
-              ? image()
-              : 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
+            uri:
+              'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
+              props.item.entry_number +
+              '.png',
           }}
           style={{
             width: 150,
