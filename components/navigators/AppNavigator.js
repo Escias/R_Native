@@ -1,12 +1,11 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-const Stack = createNativeStackNavigator();
-
 import Login from '../Login';
 import Register from '../Register';
 import PokemonList from '../List/PokemonList';
+import DetailPokemon from '../List/DetailPokemon';
+const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
@@ -19,6 +18,7 @@ const AppNavigator = () => {
       <Stack.Screen name="list" component={PokemonList} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="PokemonList" component={PokemonList} />
+      <Stack.Screen name="PokemonDetail" component={DetailPokemon} />
     </Stack.Navigator>
   );
 };

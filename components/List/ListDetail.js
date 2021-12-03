@@ -5,24 +5,22 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const ListDetail = props => {
   const [img, setImg] = useState([]);
-
-  const image = useCallback(() => {
-    fetch(
-      'https://pokeapi.co/api/v2/pokemon/' + props.item.pokemon_species.name,
-    )
-      .then(response => response.json())
-      .then(json => setImg(json.sprites.front_default))
-      .catch(error => console.error(error));
-    return img.toString();
-  }, [img, props.name]);
+  const navigation = useNavigation();
+  const navigateDetail = useCallback(() => {
+    navigation.navigate('PokemonDetail', {
+      name: props.item.pokemon_species.name,
+    });
+  }, [navigation]);
 
   return (
-    <SafeAreaView style={styles.screen}>
+    <TouchableOpacity style={styles.screen} onPress={navigateDetail}>
       <View>
         <Text style={styles.text}>{props.item.pokemon_species.name}</Text>
       </View>
@@ -40,7 +38,7 @@ const ListDetail = props => {
           }}
         />
       </View>
-    </SafeAreaView>
+    </TouchableOpacity>
   );
 };
 
