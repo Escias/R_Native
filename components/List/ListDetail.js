@@ -17,7 +17,7 @@ const ListDetail = props => {
     navigation.navigate('PokemonDetail', {
       name: props.item.pokemon_species.name,
     });
-  }, [navigation]);
+  }, [navigation, props.item.pokemon_species.name]);
 
   return (
     <TouchableOpacity style={styles.screen} onPress={navigateDetail}>
