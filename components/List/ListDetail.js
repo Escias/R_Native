@@ -20,10 +20,11 @@ const ListDetail = props => {
       .catch(error => console.error(error));
     return img.toString();
   }, [img, props.name]);
+
   return (
     <SafeAreaView style={styles.screen}>
       <View>
-        <Text>{props.item.pokemon_species.name}</Text>
+        <Text style={styles.text}>{props.item.pokemon_species.name}</Text>
       </View>
       <View>
         <Image
@@ -45,9 +46,19 @@ const ListDetail = props => {
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    borderWidth: 2,
+    borderRadius: 15,
+    margin: 7,
+    backgroundColor: '#D3D3D3',
+  },
+  text: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });
 

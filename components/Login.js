@@ -1,5 +1,8 @@
 import React, {useCallback, useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
+  Alert,
   Image,
   SafeAreaView,
   StyleSheet,
@@ -10,8 +13,36 @@ import {
 } from 'react-native';
 
 const Login = () => {
+  const navigation = useNavigation();
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
+  // [{"firstname": "Jimmy", "lastname": "Lai", "mail": "ljimmy98@hotmail.fr", "password": "Azerty12*"}]
+  const getData = () => {
+    try {
+      AsyncStorage.getItem('user').then(value => {
+        if (value != null) {
+          value = JSON.parse(value);
+          console.log(typeof value);
+          console.log(value[0].mail);
+          if (value[0].mail === mail && value[0].password === password) {
+            navigateToPokemonList();
+          } else {
+            Alert.alert('Warning', 'Email or password incorrect');
+          }
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const navigateToPokemonList = useCallback(() => {
+    navigation.navigate('PokemonList');
+  }, [navigation]);
+
+  const navigateToRegister = useCallback(() => {
+    navigation.navigate('Register');
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -33,8 +64,11 @@ const Login = () => {
           defaultValue={password}
           placeholder={'Password'}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={getData}>
           <Text>Connexion</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={navigateToRegister}>
+          <Text>Register</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -66,6 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     margin: 10,
+    backgroundColor: 'transparent',
   },
   text: {
     fontSize: 40,

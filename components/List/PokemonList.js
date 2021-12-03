@@ -54,7 +54,9 @@ const PokemonList = () => {
 const styles = StyleSheet.create({
   search: {
     borderColor: 'black',
-    borderWidth: 4,
+    borderWidth: 3,
+    borderRadius: 30,
+    marginHorizontal: 30,
   },
 });
 
