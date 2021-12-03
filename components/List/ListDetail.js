@@ -5,11 +5,14 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const ListDetail = props => {
   const [img, setImg] = useState([]);
+  const navigation = useNavigation();
 
   const image = useCallback(() => {
     fetch('https://pokeapi.co/api/v2/pokemon/' + props.name)
@@ -18,24 +21,31 @@ const ListDetail = props => {
       .catch(error => console.error(error));
     return img.toString();
   }, [img, props.name]);
+
+  const navigateDetail = useCallback(() => {
+    navigation.navigate('pokemonDetail', {name: props.name});
+  }, [navigation]);
+
   return (
     <SafeAreaView style={styles.screen}>
-      <View>
-        <Text>{props.name}</Text>
-      </View>
-      <View>
-        <Image
-          source={{
-            uri: image()
-              ? image()
-              : 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
-          }}
-          style={{
-            width: 150,
-            height: 150,
-          }}
-        />
-      </View>
+      <TouchableOpacity onPress={navigateDetail}>
+        <View>
+          <Text>{props.name}</Text>
+        </View>
+        <View>
+          <Image
+            source={{
+              uri: image()
+                ? image()
+                : 'https://www.pokepedia.fr/images/e/e2/Pok%C3%A9_Ball-RS.png',
+            }}
+            style={{
+              width: 150,
+              height: 150,
+            }}
+          />
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
